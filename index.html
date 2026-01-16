@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Personal Portfolio</title>
+    <style>
+        /* Optional: Add some styling for the submitted messages */
+        #submittedMessages {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #333;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+        }
+
+        .message-box {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #666;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+
+        .message-box b {
+            display: block;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>My Portfolio</h1>
+        <p>Welcome to my personal website</p>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="#about">About</a> |
+        <a href="#skills">Skills</a> |
+        <a href="#gallery">Gallery</a> |
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <hr>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            Hello! My name is <b>Sanchitha Hiremath</b>.  
+            I am a student learning web development using HTML.
+        </p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>My Skills</h2>
+        <ul>
+            <li>HTML</li>
+            <li>Basic CSS</li>
+            <li>Basic JavaScript</li>
+        </ul>
+    </section>
+
+    <!-- Image Gallery -->
+    <section id="gallery">
+        <h2>Image Gallery</h2>
+
+        <p>
+            <a href="#" onclick="showImage('images/image.png')">Image 1</a> |
+            <a href="#" onclick="showImage('images/nature image2.jpg')">Image 2</a> |
+            <a href="#" onclick="showImage('images/image3.jpeg')">Image 3</a>
+        </p>
+
+        <img id="galleryImage" width="200" style="display:none;">
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+
+        <form onsubmit="handleSubmit(event)">
+            <label>Name:</label><br>
+            <input type="text" name="name" id="name" required><br><br>
+
+            <label>Email:</label><br>
+            <input type="email" name="email" id="email" required><br><br>
+
+            <label>Message:</label><br>
+            <textarea rows="4" cols="30" id="message" required></textarea><br><br>
+
+            <button type="submit">Send</button>
+        </form>
+
+        <!-- This div will hold submitted messages -->
+        <div id="submittedMessages"></div>
+    </section>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 My Portfolio. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Gallery image click function
+        function showImage(imagePath) {
+            const img = document.getElementById("galleryImage");
+            img.src = imagePath;
+            img.style.display = "block";
+        }
+
+        // Contact form submit function
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent page refresh
+
+            // Get form values
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            // Create a new message box
+            const submittedDiv = document.getElementById("submittedMessages");
+            const newMessage = document.createElement("div");
+            newMessage.classList.add("message-box");
+            newMessage.innerHTML = `<b>Name:</b> ${name} <b>Email:</b> ${email} <b>Message:</b> ${message}`;
+
+            // Append the new message
+            submittedDiv.appendChild(newMessage);
+
+            // Clear form fields
+            document.getElementById("name").value = '';
+            document.getElementById("email").value = '';
+            document.getElementById("message").value = '';
+        }
+    </script>
+
+</body>
+</html>
